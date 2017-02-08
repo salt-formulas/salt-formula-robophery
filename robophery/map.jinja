@@ -1,8 +1,34 @@
 
 {%- load_yaml as base_defaults %}
 Debian:
+  debug: false
+  ble_enabled: false
+  gpio_enabled: false
+  backend: {}
+  module: {}
+  module_default:
+    read_interval: 1000
+    output_interval: 60000
+    input_backends: []
+    output_backends: []
   pkgs:
-  - python-pip
+    default:
+    - python-dev
+    - build-essential
+    gpio:
+    - python-smbus
+    - Adafruit_I2C
+    - Adafruit_Python_DHT
+    - w1thermsensor
+    ble:
+    - bluez
+    - libbluetooth-dev
+  pip:
+    gpio:
+    - Adafruit-GPIO==1.0.1
+    ble:
+    - gattlib==0.20150805
+    - PyBluez==0.22
   dir:
     base: /srv/robophery
 {%- endload %}

@@ -5,42 +5,99 @@ RoboPhery formula
 
 Python library for interfacing low level hardware sensors and actuators with MQTT bindings.
 
+
 Sample pillars
 ==============
 
-Single robophery service
+RoboPhery service with MQTT backend
 
 .. code-block:: yaml
 
     robophery:
-      service:
+      server:
         enabled: true
-        platform: rpi/bbb/micro
-        debug: False
-        output_interval: 60
-        output_backends:
-        - messages
-        - metrics
-        - files
-        output:
+        module_default:
+          input_backends:
+          - messages
+          output_backends:
+          - messages
+        backend:
           messages:
             engine: mqtt
             host: 127.0.0.1
             port: 1100
+
+RoboPhery service with StatsD backend
+
+.. code-block:: yaml
+
+    robophery:
+      server:
+        enabled: true
+        module_default:
+          output_backends:
+          - metrics
+        backend:
           metrics:
             engine: statsd
             host: 127.0.0.1
             port: 1100
+
+RoboPhery service with filesystem backend
+
+.. code-block:: yaml
+
+    robophery:
+      server:
+        enabled: true
+        module_default:
+          output_backends:
+          - files
+        backend:
           files:
+            engine: filesystem
             path: /log
+
+GPIO relay module
+
+.. code-block:: yaml
+
+    robophery:
+      server:
+        enabled: true
+        gpio_enabled: True
         module:
           light01:
             engine: gpio.relay
             port: 22
+
+I2C HTU21 module
+
+.. code-block:: yaml
+
+    robophery:
+      server:
+        enabled: true
+        gpio_enabled: True
+        module:
           livingroom01-env:
             engine: i2c.htu21
             bus: 1
-            read_interval: 1
+            read_interval: 2000
+
+BLE Parrot Flower Power module
+
+.. code-block:: yaml
+
+    robophery:
+      server:
+        enabled: true
+        ble_enabled: True
+        module:
+          livingroom01-flower:
+            engine: ble.flower_power
+            addr: 00:11:22:33:44:55:66
+            read_interval: 2000
 
 
 Documentation and Bugs

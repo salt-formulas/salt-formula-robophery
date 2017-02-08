@@ -6,5 +6,3 @@ parameters:
   robophery:
     server:
       enabled: true
-      bind:
-        address: 0.0.0.0
