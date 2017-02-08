@@ -1,0 +1,12 @@
+{%- from "robophery/map.jinja" import server with context %}
+# Fill in documentation details
+doc:
+  name: robophery
+  description: Some service info
+  role:
+    server:
+      name: server
+      param:
+        some_param:
+          name: "Some name"
+          value: "some value"
