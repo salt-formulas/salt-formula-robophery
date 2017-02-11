@@ -11,9 +11,14 @@ Debian:
     output_interval: 60000
     input_backends: []
     output_backends: []
+  source:
+    engine: git
+    address: https://github.com/cznewt/robophery.git
+    revision: master
   pkgs:
     default:
     - python-dev
+    - python-pip
     - build-essential
     gpio:
     - python-smbus

@@ -58,6 +58,23 @@ robophery_gpio_packages:
 
 {%- endif %}
 
+{# temporary until pip install is in place #}
+
+robophery_source_repo:
+  git.latest:
+  - name: {{ pillar.robophery.server.source.address }}
+  - target: /srv/robophery/source
+  - rev: {{ pillar.robophery.server.source.revision }}
+  - require:
+    - virtualenv: /srv/robophery
+
+robophery_install:
+  cmd.wait:
+  - name: source /srv/robophery/bin/activate; python setup.py install
+  - cwd: /srv/robophery/source
+  - watch:
+    - git: robophery_source_repo
+
 /etc/robophery:
   file.directory:
   - makedirs: true
