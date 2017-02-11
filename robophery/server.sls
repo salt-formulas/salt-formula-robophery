@@ -22,7 +22,7 @@ robophery_ble_packages:
 
 {%- for pip in server.pip.ble %}
 
-{{ ble }}:
+{{ pip }}:
   pip.installed:
   - bin_env: {{ server.dir.base }}
   - require:
@@ -45,7 +45,7 @@ robophery_gpio_packages:
 
 {%- for pip in server.pip.gpio %}
 
-{{ ble }}:
+{{ pip }}:
   pip.installed:
   - bin_env: {{ server.dir.base }}
   - require:
