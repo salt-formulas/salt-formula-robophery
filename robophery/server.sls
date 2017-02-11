@@ -62,9 +62,9 @@ robophery_gpio_packages:
 
 robophery_source_repo:
   git.latest:
-  - name: {{ pillar.robophery.server.source.address }}
+  - name: {{ server.source.address }}
   - target: /srv/robophery/source
-  - rev: {{ pillar.robophery.server.source.revision }}
+  - rev: {{ server.source.revision }}
   - require:
     - virtualenv: /srv/robophery
 
