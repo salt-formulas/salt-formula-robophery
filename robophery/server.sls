@@ -58,13 +58,19 @@ robophery_gpio_packages:
 
 {%- endif %}
 
+/etc/robophery:
+  file.directory:
+  - makedirs: true
+
 robophery_config:
   file.managed:
-  - /etc/robophery.conf
+  - name: /etc/robophery/robophery.conf
   - source: salt://robophery/files/robophery.conf
   - template: jinja
   - user: root
   - group: root
   - mode: 644
+  - require
+    - file: /etc/robophery
 
 {%- endif %}
