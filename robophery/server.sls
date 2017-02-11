@@ -3,7 +3,7 @@
 
 robophery_packages:
   pkg.installed:
-  - names: {{ server.pkgs }}
+  - names: {{ server.pkgs.default }}
 
 robophery_virtualenv:
   virtualenv.manage:
