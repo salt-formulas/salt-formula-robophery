@@ -1,0 +1,13 @@
+[Unit]
+Description=robophery manager
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory={{ server.dir.base }}
+Environment=ROBOPHERY_CONF=/etc/robophery
+ExecStart={{ server.dir.base }}/bin/rp_manager
+[Install]
+WantedBy=multi-user.target

@@ -18,11 +18,13 @@ Debian:
   pkgs:
     default:
     - python-dev
+    - python-virtualenv
     - python-pip
     - build-essential
     gpio:
-    - python-smbus
+    - libi2c-dev
     - python-ftdi
+    - python-smbus
     ble:
     - bluez
     - libbluetooth-dev

@@ -81,8 +81,8 @@ robophery_install:
 
 robophery_config:
   file.managed:
-  - name: /etc/robophery/robophery.conf
-  - source: salt://robophery/files/robophery.conf
+  - name: /etc/robophery/robophery_conf.py
+  - source: salt://robophery/files/robophery_conf.py
   - template: jinja
   - user: root
   - group: root
