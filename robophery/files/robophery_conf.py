@@ -1,6 +1,6 @@
 {%- from "robophery/map.jinja" import server with context %}
 
-manager_conf = {
+CONF = {
     'log_level': '{{ server.log_level }}',
     'log_handlers': {{ server.log_handlers }},
     'read_interval': {{ server.read_interval }},
