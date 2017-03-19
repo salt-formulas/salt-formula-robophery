@@ -68,6 +68,13 @@ robophery_source_repo:
   - require:
     - virtualenv: /srv/robophery
 
+robophery_lib_install:
+  cmd.wait:
+  - name: source /srv/robophery/bin/activate; pip install -r /srv/robophery/source/requirements.txt
+  - cwd: /srv/robophery/source
+  - watch:
+    - git: robophery_source_repo
+
 robophery_install:
   cmd.wait:
   - name: source /srv/robophery/bin/activate; python setup.py install
@@ -108,6 +115,8 @@ robophery_service:
   - enable: true
   - require:
     - file: robophery_service_file
+  - watch:
+    - file: /etc/robophery/robophery_conf.py
 
 {%- endif %}
 
