@@ -1,3 +1,5 @@
+{%- from "robophery/map.jinja" import server with context %}
+
 [Unit]
 Description=robophery manager
 After=network.target

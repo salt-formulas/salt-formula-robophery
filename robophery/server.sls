@@ -95,7 +95,7 @@ robophery_config:
 robophery_service_file:
   file.managed:
   - name: /etc/systemd/system/{{ server.service }}.service
-  - source: salt://robophery/files/{{ server.service }}.service
+  - source: salt://robophery/files/robophery-manager.service
   - template: jinja
   - user: root
   - mode: 644
