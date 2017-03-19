@@ -90,4 +90,25 @@ robophery_config:
   - require:
     - file: /etc/robophery
 
+{%- if grains.get('init', None) == 'systemd' %}
+
+robophery_service_file:
+  file.managed:
+  - name: /etc/systemd/system/{{ server.service }}.service
+  - source: salt://robophery/files/{{ server.service }}.service
+  - template: jinja
+  - user: root
+  - mode: 644
+  - require:
+    - file: robophery_config
+
+robophery_service:
+  service.running:
+  - name: {{ server.service }}
+  - enable: true
+  - require:
+    - file: robophery_service_file
+
+{%- endif %}
+
 {%- endif %}
