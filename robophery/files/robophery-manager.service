@@ -2,7 +2,8 @@
 
 [Unit]
 Description=robophery manager
-After=network.target
+Wants=mosquitto.service
+After=network.target mosquitto.service
 
 [Service]
 Type=simple
@@ -11,5 +12,8 @@ Group=root
 WorkingDirectory={{ server.dir.base }}
 Environment=ROBOPHERY_CONF=/etc/robophery
 ExecStart={{ server.dir.base }}/bin/rp_manager
+RestartSec=5
+Restart=on-failure
+
 [Install]
 WantedBy=multi-user.target
