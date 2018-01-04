@@ -1,16 +1,11 @@
 
 {%- load_yaml as base_defaults %}
-Debian:
-  debug: false
+default:
   ble_enabled: false
   gpio_enabled: false
-  backend: {}
   module: {}
-  module_default:
-    read_interval: 1000
-    output_interval: 60000
-    input_backends: []
-    output_backends: []
+  interface: {}
+  communication: {}
   source:
     engine: git
     address: https://github.com/cznewt/robophery.git

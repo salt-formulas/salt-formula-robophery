@@ -99,6 +99,45 @@ BLE Parrot Flower Power module
             addr: 00:11:22:33:44:55:66
             read_interval: 2000
 
+Real-world robophery setup on raspberry pi, controlling relay module and
+reading data from DHT22
+
+.. code-block:: yaml
+
+    robophery:
+      server:
+        name: ${linux:system:name}
+        service: robophery
+        dir:
+          base: /opt/robophery
+        log_level: debug
+        log_handlers:
+          - console
+          - syslog
+        read_interval: 10000
+        publish_interval: 30000
+        platform: raspberrypi
+        communication:
+          default_mqtt:
+            host: mqtthost
+            port: 1883
+            class: robophery.comm.linux.mqtt.PahoMqttComm
+        gpio_enabled: true
+        interface:
+          local_gpio:
+            engine: gpio
+            class: robophery.platform.rpi.gpio.RaspberryPiGpioInterface
+        module:
+          relay_in1:
+            data:
+              pin: 11
+              iface: local_gpio
+            invert_logic: true
+            class: robophery.module.gpio.relay.RelayModule
+          dht22:
+            data:
+              pin: 7
+            class: robophery.module.gpio.dht22.Dht22Module
 
 Documentation and Bugs
 ======================
