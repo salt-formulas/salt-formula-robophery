@@ -70,14 +70,14 @@ robophery_source_repo:
 
 robophery_lib_install:
   cmd.wait:
-  - name: source {{ server.dir.base }}/bin/activate; pip install -r {{ server.dir.base }}/source/requirements.txt
+  - name: "source {{ server.dir.base }}/bin/activate && pip install -r {{ server.dir.base }}/source/requirements.txt"
   - cwd: {{ server.dir.base }}/source
   - watch:
     - git: robophery_source_repo
 
 robophery_install:
   cmd.wait:
-  - name: source {{ server.dir.base }}/bin/activate; python setup.py install
+  - name: "source {{ server.dir.base }}/bin/activate && python setup.py install"
   - cwd: {{ server.dir.base }}/source
   - watch:
     - git: robophery_source_repo
