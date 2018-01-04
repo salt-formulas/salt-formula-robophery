@@ -63,22 +63,22 @@ robophery_gpio_packages:
 robophery_source_repo:
   git.latest:
   - name: {{ server.source.address }}
-  - target: /srv/robophery/source
+  - target: {{ server.dir.base }}/source
   - rev: {{ server.source.revision }}
   - require:
-    - virtualenv: /srv/robophery
+    - virtualenv: {{ server.dir.base }}
 
 robophery_lib_install:
   cmd.wait:
-  - name: source /srv/robophery/bin/activate; pip install -r /srv/robophery/source/requirements.txt
-  - cwd: /srv/robophery/source
+  - name: source {{ server.dir.base }}/bin/activate; pip install -r {{ server.dir.base }}/source/requirements.txt
+  - cwd: {{ server.dir.base }}/source
   - watch:
     - git: robophery_source_repo
 
 robophery_install:
   cmd.wait:
-  - name: source /srv/robophery/bin/activate; python setup.py install
-  - cwd: /srv/robophery/source
+  - name: source {{ server.dir.base }}/bin/activate; python setup.py install
+  - cwd: {{ server.dir.base }}/source
   - watch:
     - git: robophery_source_repo
 
