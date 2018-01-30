@@ -1,13 +1,14 @@
 
 =================
-RoboPhery formula
+RoboPhery Formula
 =================
 
-Python library for interfacing low level hardware sensors and actuators with MQTT bindings.
+Python library for interfacing low level hardware sensors and actuators with
+MQTT bindings.
 
 
-Sample pillars
-==============
+Sample Metadata
+===============
 
 RoboPhery service with MQTT backend
 
@@ -138,6 +139,13 @@ reading data from DHT22
             data:
               pin: 7
             class: robophery.module.gpio.dht22.Dht22Module
+
+
+References
+==========
+
+* http://robophery.readthedocs.io/
+
 
 Documentation and Bugs
 ======================
