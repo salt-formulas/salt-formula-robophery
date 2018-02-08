@@ -10,6 +10,6 @@ Vcs-Git: https://github.com/tcpcloud/salt-formula-robophery.git
 
 Package: salt-formula-robophery
 Architecture: all
-Depends: ${misc:Depends}, salt-master, reclass
+Depends: ${misc:Depends}
 Description: robophery salt formula
  Install and configure robophery system.
